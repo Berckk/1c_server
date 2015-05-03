@@ -18,13 +18,9 @@ Building container
 
     docker build -t server ./8.3
 
-Create data volume container
-  
-    docker create -v /home/usr1cv8 -v /var/log/1c --name serverdata server /bin/true
-
 ### Run
 
-    docker run -d -p 1540-1541:1540-1541 -p 1560-1591:1560-1591 --volumes-from serverdata --name server --restart=always server
+    docker run -d -p 1540-1541:1540-1541 -p 1560-1591:1560-1591 --name server --restart=always server
 
 ### Shell
 

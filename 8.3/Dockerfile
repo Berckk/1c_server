@@ -42,16 +42,15 @@ RUN if [ ! -f /opt/1c-enterprise83-server_${SERVER_1C_VERSION}_${SERVER_1C_ARCH}
 RUN dpkg -i /opt/1c-enterprise83-common_${SERVER_1C_VERSION}_${SERVER_1C_ARCH}.deb \
             /opt/1c-enterprise83-server_${SERVER_1C_VERSION}_${SERVER_1C_ARCH}.deb
 
-RUN chown -R usr1cv8:grp1cv8 /opt/1C
-
 RUN mkdir -p /opt/1C/v8.3/x86_64/conf/
 COPY logcfg.xml /opt/1C/v8.3/x86_64/conf/
+RUN chown -R usr1cv8:grp1cv8 /opt/1C
 
 RUN mkdir -p /var/log/1c/dumps/
 RUN chown -R usr1cv8:grp1cv8 /var/log/1c/
-RUN chmod 770 /var/log/1c
+RUN chmod 755 /var/log/1c
 
-VOLUME /home/usr1cv8/.1cv8/
+VOLUME /home/usr1cv8/
 VOLUME /var/log/1c
 
 COPY docker-entrypoint.sh /
@@ -59,4 +58,5 @@ COPY docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 EXPOSE 1540-1541 1560-1591
+
 CMD ["ragent"]
