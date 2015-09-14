@@ -23,19 +23,19 @@ RUN apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
 
 ENV LANG ru_RU.utf8
 
-ENV SERVER_1C_VERSION 8.3.5-1460
+ENV SERVER_1C_VERSION 8.3.6-2299
 ENV SERVER_1C_ARCH amd64
 ENV DIST_SERVER_1C ./dist/
 
 ADD ${DIST_SERVER_1C} /opt/
 
 RUN if [ ! -f /opt/1c-enterprise83-common_${SERVER_1C_VERSION}_${SERVER_1C_ARCH}.deb ]; then \
-    echo "File '1c-enterprise83-common_${SERVER_1C_VERSION}_${SERVER_1C_ARCH}.deb' does not exist."; \
+    echo File 1c-enterprise83-common_${SERVER_1C_VERSION}_${SERVER_1C_ARCH}.deb does not exist.; \
     echo "DIST_SERVER_1C set incorrectly. See README.md file."; \
     exit 1; fi
 
 RUN if [ ! -f /opt/1c-enterprise83-server_${SERVER_1C_VERSION}_${SERVER_1C_ARCH}.deb ]; then \
-    echo "File '1c-enterprise83-server_${SERVER_1C_VERSION}_${SERVER_1C_ARCH}.deb' does not exist."; \
+    echo File 1c-enterprise83-server_${SERVER_1C_VERSION}_${SERVER_1C_ARCH}.deb does not exist.; \
     echo "DIST_SERVER_1C set incorrectly. See README.md file."; \
     exit 1; fi
 
