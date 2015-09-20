@@ -1,27 +1,16 @@
 # 1C Server
 
-## Usage image
+## Set env
 
-Add to Dockerfile
+    1C_ENV=8.3.6-2299 # For example
 
-    FROM temrdm/1c_server:8.3
+## Download dependency
 
-## Manual build
+Download from [users.v8.1c.ru](https://users.v8.1c.ru/distribution/project/Platform83) postgres deb package and extract it to ```./${1C_VER}/dist``` path.
 
-### Dependency
-
-Download from [users.v8.1c.ru](https://users.v8.1c.ru/distribution/project/Platform83) postgres deb package and extract it to ```./8.3/dist``` path.
-
-### Build
+## Build
 
 Building container
 
-    docker build -t server ./8.3
+    docker build -t temrdm/1c_server:${1C_VER} ./${1C_VER}
 
-### Run
-
-    docker run -d -p 1540-1541:1540-1541 -p 1560-1591:1560-1591 --name server --restart=always server
-
-### Shell
-
-    docker run -i --volumes-from serverdata -t server /bin/bash
